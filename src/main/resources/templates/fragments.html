@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <title>Order Tracker</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+
+<nav th:fragment="header">
+    <h1 th:text="${title}">Order Tracker</h1>
+    <ul class="nav">
+        <li class="nav-item"><a class="nav-link" href="/orders">All Orders</a></li>
+        <li class="nav-item"><a class="nav-link" href="/orders/create">Create Order</a></li>
+        <li class="nav-item"><a class="nav-link" href="/orders/delete">Delete Orders</a></li>
+    </ul>
+</nav>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<header th:replace="fragments :: header"></header>
+
+<form method="post">
+    <div class="form-group">
+        <label>Name
+            <input th:field="${order.name}" class="form-control">
+        </label>
+        <p class="error" th:errors="${order.name}"></p>
+    </div>
+    <div class="form-group">
+        <label>Description
+            <input th:field="${order.description}" class="form-control">
+        </label>
+        <p class="error" th:errors="${order.description}"></p>
+    </div>
+    <div class="form-group">
+        <label>Contact Email
+            <input th:field="${order.contactEmail}" class="form-control">
+        </label>
+        <p class="error" th:errors="${order.contactEmail}"></p>
+    </div>
+    <div class="form-group">
+        <label>Order Number
+            <input th:field="${order.orderNumber}" class="form-control">
+        </label>
+        <p class="error" th:errors="${order.orderNumber}"></p>
+    </div>
+    <div class="form-group">
+        <label>Flooring Type
+            <select th:field="${order.type}">
+                <option th:each="type : ${types}"
+                        th:value="${type}"
+                        th:text="${type.displayName}"
+                ></option>
+            </select>
+        </label>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create Order" class="btn btn-success">
+    </div>
+</form>
+
+</body>
+</html>
