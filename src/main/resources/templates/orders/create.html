@@ -7,10 +7,16 @@
 
 <form method="post">
     <div class="form-group">
-        <label>Name
-            <input th:field="${order.name}" class="form-control">
+        <label>First Name
+            <input th:field="${order.firstName}" class="form-control">
         </label>
-        <p class="error" th:errors="${order.name}"></p>
+        <p class="error" th:errors="${order.firstName}"></p>
+    </div>
+    <div class="form-group">
+        <label>Last Name
+            <input th:field="${order.lastName}" class="form-control">
+        </label>
+        <p class="error" th:errors="${order.lastName}"></p>
     </div>
     <div class="form-group">
         <label>Description

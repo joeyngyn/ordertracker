@@ -10,9 +10,11 @@ public class Order {
     private int id;
     private static int nextId = 1;
 
-    @NotBlank(message = "Name is required.")
-    @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters.")
-    private String name;
+    @NotBlank(message = "First name is required.")
+    private String firstName;
+
+    @NotBlank(message = "Last Name is required.")
+    private String lastName;
 
     @Size(max = 500, message = "Description too long!")
     private String description;
@@ -29,9 +31,10 @@ public class Order {
 
     private OrderType type;
 
-    public Order(String name, String description, String contactEmail, String orderNumber, String orderAddress, OrderType type) {
+    public Order(String firstName, String lastName, String description, String contactEmail, String orderNumber, String orderAddress, OrderType type) {
         this();
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.description = description;
         this.contactEmail = contactEmail;
         this.orderNumber = orderNumber;
@@ -44,12 +47,20 @@ public class Order {
         nextId++;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getDescription() {
@@ -98,7 +109,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return name;
+        return firstName;
     }
 
     @Override
