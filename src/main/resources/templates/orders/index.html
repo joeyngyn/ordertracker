@@ -14,7 +14,8 @@
             <th>Name</th>
             <th>Description</th>
             <th>Contact Email</th>
-            <th>Order Number</th>
+            <th>Site Address</th>
+            <th>Invoice Number</th>
             <th>Flooring Type</th>
         </tr>
     </thead>
@@ -23,6 +24,7 @@
         <td th:text="${order.name}"></td>
         <td th:text="${order.description}"></td>
         <td th:text="${order.contactEmail}"></td>
+        <td th:text="${order.orderAddress}"></td>
         <td th:text="${order.orderNumber}"></td>
         <td th:text="${order.type.displayName}"></td>
     </tr>

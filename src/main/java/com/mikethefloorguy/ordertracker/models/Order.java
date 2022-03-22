@@ -24,14 +24,18 @@ public class Order {
     @NotBlank (message = "Order number must be entered.")
     private String orderNumber;
 
+    @NotBlank
+    private String orderAddress;
+
     private OrderType type;
 
-    public Order(String name, String description, String contactEmail, String orderNumber, OrderType type) {
+    public Order(String name, String description, String contactEmail, String orderNumber, String orderAddress, OrderType type) {
         this();
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
         this.orderNumber = orderNumber;
+        this.orderAddress = orderAddress;
         this.type = type;
     }
 
@@ -70,6 +74,14 @@ public class Order {
 
     public void setOrderNumber(String orderNumber) {
         this.orderNumber = orderNumber;
+    }
+
+    public String getOrderAddress() {
+        return orderAddress;
+    }
+
+    public void setOrderAddress(String orderAddress) {
+        this.orderAddress = orderAddress;
     }
 
     public OrderType getType() {
