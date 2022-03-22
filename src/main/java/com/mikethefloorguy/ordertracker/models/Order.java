@@ -27,17 +27,21 @@ public class Order {
     private String orderNumber;
 
     @NotBlank
+    private String orderPrice;
+
+    @NotBlank
     private String orderAddress;
 
     private OrderType type;
 
-    public Order(String firstName, String lastName, String description, String contactEmail, String orderNumber, String orderAddress, OrderType type) {
+    public Order(String firstName, String lastName, String description, String contactEmail, String orderNumber, String orderPrice, String orderAddress, OrderType type) {
         this();
         this.firstName = firstName;
         this.lastName = lastName;
         this.description = description;
         this.contactEmail = contactEmail;
         this.orderNumber = orderNumber;
+        this.orderPrice = orderPrice;
         this.orderAddress = orderAddress;
         this.type = type;
     }
@@ -85,6 +89,14 @@ public class Order {
 
     public void setOrderNumber(String orderNumber) {
         this.orderNumber = orderNumber;
+    }
+
+    public String getOrderPrice() {
+        return orderPrice;
+    }
+
+    public void setOrderPrice(String orderPrice) {
+        this.orderPrice = orderPrice;
     }
 
     public String getOrderAddress() {

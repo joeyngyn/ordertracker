@@ -37,6 +37,12 @@
         <p class="error" th:errors="${order.orderNumber}"></p>
     </div>
     <div class="form-group">
+        <label>Project Price
+            <input th:field="${order.orderPrice}" class="form-control">
+        </label>
+        <p class="error" th:errors="${order.orderPrice}"></p>
+    </div>
+    <div class="form-group">
         <label>Site Address
             <input th:field="${order.orderAddress}" class="form-control">
         </label>

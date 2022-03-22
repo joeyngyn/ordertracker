@@ -17,6 +17,7 @@
             <th>Contact Email</th>
             <th>Site Address</th>
             <th>Invoice Number</th>
+            <th>Project Price</th>
             <th>Flooring Type</th>
         </tr>
     </thead>
@@ -28,6 +29,7 @@
         <td th:text="${order.contactEmail}"></td>
         <td th:text="${order.orderAddress}"></td>
         <td th:text="${order.orderNumber}"></td>
+        <td th:text="${order.orderPrice}"></td>
         <td th:text="${order.type.displayName}"></td>
     </tr>
 </table>

@@ -11,7 +11,8 @@
     <th:block th:each="order : ${orders}">
         <div class="form-group">
             <label>
-                <span th:text="${order.name}"></span>
+                <span th:text="${order.firstName}"></span>
+                <span th:text="${order.lastName}"></span>
                 <input type="checkbox" name="orderIds" th:value="${order.id}" class="form-control">
             </label>
         </div>
