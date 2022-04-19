@@ -18,10 +18,10 @@ public class OrderDetails extends AbstractEntity {
     @NotBlank (message = "Order number must be entered.")
     private String orderNumber;
 
-    @NotBlank
+    @NotBlank(message = "Pricing must be included!")
     private String orderPrice;
 
-    @NotBlank
+    @NotBlank(message = "Please input customer address.")
     private String orderAddress;
 
     public OrderDetails(String description, String contactEmail) {
