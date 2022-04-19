@@ -1,139 +1,80 @@
 package com.mikethefloorguy.ordertracker.models;
 
-import javax.validation.constraints.Email;
+import javax.persistence.*;
+import javax.persistence.ManyToOne;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Order {
+@Entity
+public class Order extends AbstractEntity{
 
-    private int id;
-    private static int nextId = 1;
+    @NotBlank(message = "Name is required.")
+    @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters.")
+    private String name;
 
-    @NotBlank(message = "First name is required.")
-    private String firstName;
+    @OneToOne(cascade = CascadeType.ALL)
+    @Valid
+    @NotNull
+    private OrderDetails orderDetails;
 
-    @NotBlank(message = "Last Name is required.")
-    private String lastName;
+    @ManyToOne
+    @NotNull(message = "Category is required")
+    private OrderCategory orderCategory;
 
-    @Size(max = 500, message = "Description too long!")
-    private String description;
+    @ManyToMany
+    private final List<Tag> tags = new ArrayList<>();
 
-    @NotBlank(message = "Email is required.")
-    @Email(message = "Invalid email. Try again.")
-    private String contactEmail;
-
-    @NotBlank (message = "Order number must be entered.")
-    private String orderNumber;
-
-    @NotBlank
-    private String orderPrice;
-
-    @NotBlank
-    private String orderAddress;
-
-    private OrderType type;
-
-    public Order(String firstName, String lastName, String description, String contactEmail, String orderNumber, String orderPrice, String orderAddress, OrderType type) {
-        this();
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.description = description;
-        this.contactEmail = contactEmail;
-        this.orderNumber = orderNumber;
-        this.orderPrice = orderPrice;
-        this.orderAddress = orderAddress;
-        this.type = type;
+    public Order(String name, OrderCategory orderCategory) {
+        this.name = name;
+        this.orderCategory = orderCategory;
     }
 
     public Order() {
-        this.id = nextId;
-        nextId++;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public OrderCategory getOrderCategory() {
+        return orderCategory;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setOrderCategory(OrderCategory orderCategory) {
+        this.orderCategory = orderCategory;
     }
 
-    public String getDescription() {
-        return description;
+    public OrderDetails getOrderDetails() {
+        return orderDetails;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setOrderDetails(OrderDetails orderDetails) {
+        this.orderDetails = orderDetails;
     }
 
-    public String getContactEmail() {
-        return contactEmail;
+    public List<Tag> getTags() {
+        return tags;
     }
 
-    public void setContactEmail(String contactEmail) {
-        this.contactEmail = contactEmail;
-    }
-
-    public String getOrderNumber() {
-        return orderNumber;
-    }
-
-    public void setOrderNumber(String orderNumber) {
-        this.orderNumber = orderNumber;
-    }
-
-    public String getOrderPrice() {
-        return orderPrice;
-    }
-
-    public void setOrderPrice(String orderPrice) {
-        this.orderPrice = orderPrice;
-    }
-
-    public String getOrderAddress() {
-        return orderAddress;
-    }
-
-    public void setOrderAddress(String orderAddress) {
-        this.orderAddress = orderAddress;
-    }
-
-    public OrderType getType() {
-        return type;
-    }
-
-    public void setType(OrderType type) {
-        this.type = type;
-    }
-
-    public int getId() {
-        return id;
+    public void addTag(Tag tag) {
+        this.tags.add(tag);
     }
 
     @Override
     public String toString() {
-        return firstName;
+        return name;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Order order = (Order) o;
-        return id == order.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
+    public boolean isMatchingPassword(String password) {
+        return false;
     }
 }

@@ -11,14 +11,13 @@
     <th:block th:each="order : ${orders}">
         <div class="form-group">
             <label>
-                <span th:text="${order.firstName}"></span>
-                <span th:text="${order.lastName}"></span>
+                <span th:text="${order.name}"></span>
                 <input type="checkbox" name="orderIds" th:value="${order.id}" class="form-control">
             </label>
         </div>
     </th:block>
 
-    <input type="submit" value="Delete" class="btn btn-danger">
+    <input type="submit" value="Delete Selected Orders" class="btn btn-danger">
 </form>
 
 </body>

@@ -8,11 +8,11 @@
 <table class = "table table-striped">
     <thead>
     <tr>
-        <th>Order Name</th>
+        <th>Category Name</th>
     </tr>
     </thead>
-    <tr th:each = "order : ${orders}">
-        <td><a th:href="'/orders/detail?eventId=' + ${order.id}" th:text = "${order.name}"></a></td>
+    <tr th:each = "orderCategory : ${orderCategories}">
+        <td><a th:text = "${orderCategory.name}" th:href="'/orders/?categoryId=' + ${orderCategory.Id}"></a></td>
     </tr>
 </table>
 
