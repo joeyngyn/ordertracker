@@ -1,6 +1,5 @@
 package com.mikethefloorguy.ordertracker.controllers;
 
-
 import com.mikethefloorguy.ordertracker.data.OrderCategoryRepository;
 import com.mikethefloorguy.ordertracker.data.OrderRepository;
 import com.mikethefloorguy.ordertracker.data.TagRepository;
@@ -32,6 +31,7 @@ public class OrderController {
 
     @GetMapping
     public String displayAllOrders(@RequestParam(required = false) Integer categoryId, Model model){
+
         if (categoryId == null) {
             model.addAttribute("title", "All Orders");
             model.addAttribute("orders", orderRepository.findAll());
@@ -45,6 +45,7 @@ public class OrderController {
                 model.addAttribute("orders", category.getOrders());
             }
         }
+
         return "orders/index";
     }
 
@@ -52,14 +53,13 @@ public class OrderController {
     public String displayCreateOrderForm(Model model) {
         model.addAttribute("title", "Create Order");
         model.addAttribute(new Order());
-        model.addAttribute("types", orderCategoryRepository.findAll());
+        model.addAttribute("categories", orderCategoryRepository.findAll());
         return "orders/create";
     }
 
     @PostMapping("create")
     public String processCreateOrderForm(@ModelAttribute @Valid Order newOrder,
                                          Errors errors, Model model){
-
         if (errors.hasErrors()) {
             model.addAttribute("title", "Create Order");
             return "orders/create";

@@ -24,9 +24,12 @@ public class OrderDetails extends AbstractEntity {
     @NotBlank(message = "Please input customer address.")
     private String orderAddress;
 
-    public OrderDetails(String description, String contactEmail) {
+    public OrderDetails(String description, String contactEmail, String orderNumber, String orderPrice, String orderAddress) {
         this.description = description;
         this.contactEmail = contactEmail;
+        this.orderNumber = orderNumber;
+        this.orderPrice = orderPrice;
+        this.orderAddress = orderAddress;
     }
 
     public OrderDetails() {
